@@ -19,7 +19,7 @@ const boxVariants = {
   unchecked: {background: 'var(--gray-2)', transition: {duration: 0.1}},
 };
 
-function checkButton({checked, handleCheck}) {
+function CheckButton({checked, handleCheck}) {
   const pathLength = useMotionValue(0);
   const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1]);
 
@@ -30,6 +30,12 @@ function checkButton({checked, handleCheck}) {
     variants={boxVariants}
     onClick={() => handleCheck()}
     >
+      <motion.svg 
+      className={styles.svg}
+      viewBox="0 0 53 38"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      >  
       <motion.path
       variants={checkVariants}
       animate={checked ? 'checked' : 'unchecked'}
@@ -41,9 +47,11 @@ function checkButton({checked, handleCheck}) {
       strokeLinejoin="round"
       strokeLinecap="round"
       />
-        
+      </motion.svg>
       
     </motion.div>
   )
   
 }
+
+export default CheckButton;
