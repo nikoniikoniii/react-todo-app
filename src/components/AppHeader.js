@@ -1,0 +1,38 @@
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Button, { SelectButton } from "./Button.js";
+import styles from "../styles/modules/app.module.scss";
+import TodoModal from "./TodoModal.js";
+import { updateFilterStatus } from "../slices/todoSlice.js";
+
+function appHeader() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const initialFilterStatus = useSelector((state) => state.todo.filterStatus);
+  const [filterStatus, setFilterStatus] = useState(initialFilterStatus);
+  const dispatch = useDispatch();
+
+  const uptadeFilter = (e) => {
+    setFilterStatus(e.target.value);
+    dispatch(updateFilterStatus(e.target.value));
+  };
+
+  return (
+    <div className={styles.appHeader}>
+      <button variant="primary" onClick={() => setModalOpen(true)}>
+        Add Task
+      </button>
+      <SelectButton
+        id="status"
+        onChange={(e) => updateFilter(e)}
+        value={filterStatus}
+      >
+        <option value="all">All</option>
+        <option value="incomplete">Incomplete</option>
+        <option value="complete">completed</option>
+      </SelectButton>
+      <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />
+    </div>
+  );
+}
+
+export default appHeader;
