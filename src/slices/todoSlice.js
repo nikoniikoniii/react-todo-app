@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const getInitialTodo = () => {
-  //getting to do list
+  // getting todo list
   const localTodoList = window.localStorage.getItem("todoList");
-  //if to do list is not empty
+  // if todo list is not empty
   if (localTodoList) {
     return JSON.parse(localTodoList);
   }
@@ -21,7 +21,8 @@ export const todoSlice = createSlice({
   initialState: initialValue,
   reducers: {
     addTodo: (state, action) => {
-      state.todoList = window.localStorage.getItem("todoList");
+      state.todoList.push(action.payload);
+      const todoList = window.localStorage.getItem("todoList");
       if (todoList) {
         const todoListArr = JSON.parse(todoList);
         todoListArr.push({
@@ -49,18 +50,20 @@ export const todoSlice = createSlice({
             todo.title = action.payload.title;
           }
         });
+        window.localStorage.setItem("todoList", JSON.stringify(todoListArr));
+        state.todoList = [...todoListArr];
       }
     },
     deleteTodo: (state, action) => {
       const todoList = window.localStorage.getItem("todoList");
       if (todoList) {
         const todoListArr = JSON.parse(todoList);
-        todoList.forEach((todo, index) => {
+        todoListArr.forEach((todo, index) => {
           if (todo.id === action.payload) {
             todoListArr.splice(index, 1);
           }
         });
-        localStorage.getItem("todoList", JSON.stringify(todoListArr));
+        window.localStorage.setItem("todoList", JSON.stringify(todoListArr));
         state.todoList = todoListArr;
       }
     },

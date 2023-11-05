@@ -10,7 +10,7 @@ function App() {
     <>
       <div className="container">
         <PageTitle>To Do List</PageTitle>
-        <div className={style.app_wrapper}>
+        <div className={styles.app_wrapper}>
           <p>To do List Using React</p>
           <AppHeader />
           <AppContent />
