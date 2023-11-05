@@ -11,7 +11,7 @@ function appHeader() {
   const [filterStatus, setFilterStatus] = useState(initialFilterStatus);
   const dispatch = useDispatch();
 
-  const uptadeFilter = (e) => {
+  const updateFilter = (e) => {
     setFilterStatus(e.target.value);
     dispatch(updateFilterStatus(e.target.value));
   };
