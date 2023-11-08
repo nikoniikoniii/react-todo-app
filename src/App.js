@@ -9,9 +9,8 @@ function App() {
   return (
     <>
       <div className="container">
-        <PageTitle>To Do List</PageTitle>
-        <div className={styles.app_wrapper}>
-          <p>To do List Using React</p>
+        <PageTitle>TO DO List</PageTitle>
+        <div className={styles.app__wrapper}>
           <AppHeader />
           <AppContent />
         </div>

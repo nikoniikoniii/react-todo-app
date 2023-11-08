@@ -1,8 +1,4 @@
-import {
-  motion,
-  useMotionValue,
-  useTransform,
-} from "framer-motion/dist/framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import React from "react";
 import styles from "../styles/modules/todoItem.module.scss";
 

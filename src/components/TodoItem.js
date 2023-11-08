@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { motion } from "framer-motion/dist/framer-motion";
+import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import React, { useEffect, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
